@@ -17,8 +17,8 @@ public class PlayerFire : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            GameObject magazine = Instantiate(bullet);
-            magazine.transform.position = Gun.transform.position;
+            GameObject Shooter = Instantiate(bullet);
+            Shooter.transform.position = Gun.transform.position;
         }
     }
 }
