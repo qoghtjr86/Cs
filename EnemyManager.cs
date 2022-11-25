@@ -7,13 +7,13 @@ public class EnemyManager : MonoBehaviour
     float minTime = 1;
     float maxTime = 5;
     float currentTime;
-    public float createTime;
+    public float intervalTime;
     public GameObject enemy;
     
     // Start is called before the first frame update
     void Start()
     {
-        createTime = UnityEngine.Random.Range(minTime, maxTime);
+        intervalTime = UnityEngine.Random.Range(minTime, maxTime);
     }
 
     // Update is called once per frame
@@ -21,11 +21,11 @@ public class EnemyManager : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        if(currentTime > createTime)
+        if(currentTime > intervalTime)
         {
             GameObject spawner = Instantiate(enemy);
             spawner.transform.position = transform.position;
-            createTime = UnityEngine.Random.Range(minTime, maxTime);
+            intervalTime = UnityEngine.Random.Range(minTime, maxTime);
             currentTime = 0;
         }
     }
