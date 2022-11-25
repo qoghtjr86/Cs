@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     float minTime = 1;
     float maxTime = 5;
     float currentTime;
-    public float intervalTime;
+    float intervalTime;
     public GameObject enemy;
     
     // Start is called before the first frame update
