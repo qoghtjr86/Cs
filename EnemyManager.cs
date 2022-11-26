@@ -23,8 +23,8 @@ public class EnemyManager : MonoBehaviour
 
         if(currentTime > intervalTime)
         {
-            GameObject spawner = Instantiate(enemy);
-            spawner.transform.position = transform.position;
+            GameObject Cylinder = Instantiate(enemy);
+            Cylinder.transform.position = transform.position;
             intervalTime = UnityEngine.Random.Range(minTime, maxTime);
             currentTime = 0;
         }

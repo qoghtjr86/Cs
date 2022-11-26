@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour
 {
     public GameObject bullet;
-    public GameObject Gun;
+    public GameObject Cylinder;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +17,8 @@ public class PlayerFire : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            GameObject Shooter = Instantiate(bullet);
-            Shooter.transform.position = Gun.transform.position;
+            GameObject Gun = Instantiate(bullet);
+            Gun.transform.position = Cylinder.transform.position;
         }
     }
 }
