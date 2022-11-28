@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class Cylinder : MonoBehaviour
 {
     float minTime = 1;
     float maxTime = 5;
