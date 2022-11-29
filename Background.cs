@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    public Material bgMaterial;
+    public Material Panorama;
     public float scrollSpeed = 0.2f;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class Background : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = Vector2.up;
-        bgMaterial.mainTextureOffset += direction * scrollSpeed * Time.deltaTime;
+        Vector2 dir = Vector2.up;
+        Panorama.mainTextureOffset += dir * scrollSpeed * Time.deltaTime;
     }
 }
