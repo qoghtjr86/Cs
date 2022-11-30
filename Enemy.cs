@@ -39,5 +39,9 @@ public class Enemy : MonoBehaviour
 
         Destroy(other.gameObject);
         Destroy(gameObject);
+
+        GameObject ScoreObj = GameObject.Find("ScoreManager");
+        ScoreManager ScoreInst = ScoreObj.GetComponent<ScoreManager>();
+        ScoreInst.SetScore(ScoreInst.GetScore() + 1);
     }
 }
