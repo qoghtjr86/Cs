@@ -40,8 +40,8 @@ public class Enemy : MonoBehaviour
         Destroy(other.gameObject);
         Destroy(gameObject);
 
-        GameObject Object = GameObject.Find("ScoreManager");
-        ScoreManager Compotance = Object.GetComponent<ScoreManager>();
+        GameObject Obtance = GameObject.Find("ScoreManager");
+        ScoreManager Compotance = Obtance.GetComponent<ScoreManager>();
         Compotance.SetScore(Compotance.GetScore() + 1);
     }
 }
