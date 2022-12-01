@@ -36,11 +36,6 @@ public class ScoreManager : MonoBehaviour
     }
     public int Score
     {
-        get
-        {
-            return currentScore;
-        }
-
         set
         {
             currentScore = value;
@@ -52,6 +47,11 @@ public class ScoreManager : MonoBehaviour
                 bestScoreUI.text = "최고점수 : " + bestScore;
                 PlayerPrefs.SetInt("Best Score", bestScore);
             }
+        }
+
+        get
+        {
+            return currentScore;
         }
     }
 
