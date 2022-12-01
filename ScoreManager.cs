@@ -11,6 +11,17 @@ public class ScoreManager : MonoBehaviour
 
     public Text bestScoreUI;
     private int bestScore;
+
+    public static ScoreManager Instance = null;
+
+    void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,23 +34,25 @@ public class ScoreManager : MonoBehaviour
     {
         
     }
-
-    public void SetScore(int value)
+    public int Score
     {
-        currentScore = value;
-        currentScoreUI.text = "현재점수 : " + currentScore;
-
-        if (currentScore > bestScore)
+        get
         {
-            bestScore = currentScore;
-            bestScoreUI.text = "최고점수 : " + bestScore;
-            PlayerPrefs.SetInt("Best Score", bestScore);
+            return currentScore;
         }
-    }
 
-    public int GetScore()
-    {
-        return currentScore;
+        set
+        {
+            currentScore = value;
+            currentScoreUI.text = "현재점수 : " + currentScore;
+
+            if(currentScore > bestScore)
+            {
+                bestScore = currentScore;
+                bestScoreUI.text = "최고점수 : " + bestScore;
+                PlayerPrefs.SetInt("Best Score", bestScore);
+            }
+        }
     }
 
 }

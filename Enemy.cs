@@ -34,14 +34,13 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        ScoreManager.Instance.Score++;
+
         GameObject Cylinder = Instantiate(explosion);
         Cylinder.transform.position = transform.position;
 
         Destroy(other.gameObject);
         Destroy(gameObject);
 
-        GameObject Obtance = GameObject.Find("ScoreManager");
-        ScoreManager Compotance = Obtance.GetComponent<ScoreManager>();
-        Compotance.SetScore(Compotance.GetScore() + 1);
     }
 }
