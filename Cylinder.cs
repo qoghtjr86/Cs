@@ -8,7 +8,7 @@ public class Cylinder : MonoBehaviour
     float maxTime = 5;
     float currentTime;
     float intervalTime;
-    public GameObject enemy;
+    public GameObject enemyBody;
     
     // Start is called before the first frame update
     void Start()
@@ -23,8 +23,8 @@ public class Cylinder : MonoBehaviour
 
         if(currentTime > intervalTime)
         {
-            GameObject Cylinder = Instantiate(enemy);
-            Cylinder.transform.position = transform.position;
+            GameObject enemy = Instantiate(enemyBody);
+            enemy.transform.position = transform.position;
             intervalTime = UnityEngine.Random.Range(minTime, maxTime);
             currentTime = 0;
         }

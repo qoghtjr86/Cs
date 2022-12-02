@@ -39,8 +39,16 @@ public class Enemy : MonoBehaviour
         GameObject Cylinder = Instantiate(explosion);
         Cylinder.transform.position = transform.position;
 
-        Destroy(other.gameObject);
+        if (other.gameObject.name.Contains("Bullet"))
+        {
+            other.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }
         Destroy(gameObject);
+
 
     }
 }
