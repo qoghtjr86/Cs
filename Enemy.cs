@@ -16,8 +16,15 @@ public class Enemy : MonoBehaviour
         if(randValue < 3)
         {
             GameObject target = GameObject.Find("Player");
-            dir = target.transform.position - transform.position;
-            dir.Normalize();
+            if (target)
+            {
+                dir = target.transform.position - transform.position;
+                dir.Normalize();
+            }
+            else
+            {
+                dir = Vector3.down;
+            }
         }
 
         else
