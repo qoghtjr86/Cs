@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         GameObject Event = Instantiate(effect);
         Event.transform.position = transform.position;
 
-        if (other.gameObject.name.Contains("Bullet"))
+        if (other.gameObject.name.Contains("BulletBody"))
         {
             other.gameObject.SetActive(false);
         }

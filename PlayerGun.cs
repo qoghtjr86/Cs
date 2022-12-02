@@ -7,16 +7,16 @@ public class PlayerGun : MonoBehaviour
     public GameObject bulletBody;
     public GameObject Cylinder;
     public int capacity = 10;
-    GameObject[] Cartridge;
+    GameObject[] Magazine;
     // Start is called before the first frame update
     void Start()
     {
-        Cartridge = new GameObject[capacity];
+        Magazine = new GameObject[capacity];
         for(int i = 0; i < capacity; i++)
         {
             GameObject bullet = Instantiate(bulletBody);
             bullet.SetActive(false);
-            Cartridge[i] = bullet;
+            Magazine[i] = bullet;
         }
     }
 
@@ -27,7 +27,7 @@ public class PlayerGun : MonoBehaviour
         {
             for(int i = 0; i < capacity; i++)
             {
-                GameObject Gun = Cartridge[i];
+                GameObject Gun = Magazine[i];
                 if(Gun.activeSelf == false)
                 {
                     Gun.transform.position = Cylinder.transform.position;
