@@ -7,7 +7,7 @@ public class PlayerGun : MonoBehaviour
     public GameObject bulletBody;
     public GameObject Cylinder;
     public int capacity = 10;
-    static GameObject[] Magazine;
+    GameObject[] Magazine;
     // Start is called before the first frame update
     void Start()
     {
