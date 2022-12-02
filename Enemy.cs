@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 5;
     Vector3 dir;
-    public GameObject explosion;
+    public GameObject effect;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,8 +43,8 @@ public class Enemy : MonoBehaviour
     {
         ScoreManager.Instance.Score++;
 
-        GameObject Cylinder = Instantiate(explosion);
-        Cylinder.transform.position = transform.position;
+        GameObject Event = Instantiate(effect);
+        Event.transform.position = transform.position;
 
         if (other.gameObject.name.Contains("Bullet"))
         {
