@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour
                 dir = Vector3.down;
             }
         }
-
         else
         {
             dir = Vector3.down;
@@ -59,7 +58,5 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
         }
         gameObject.SetActive(false);
-
-
     }
 }
