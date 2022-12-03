@@ -6,13 +6,13 @@ public class SpawnManager : MonoBehaviour
 {
     float minTime = 0.5f;
     float maxTime = 1.5f;
-    float currentTime;
-    float intervalTime;
+    float now;
+    float gap;
 
     public GameObject enemyBody;
-    public int capacity = 10;
-    GameObject[] Cartridge;
-    public Transform[] Publisher;
+    public int length = 10;
+    GameObject[] Sector;
+    public Transform[] Cylinder;
     
     // Start is called before the first frame update
     void Start()
@@ -22,37 +22,38 @@ public class SpawnManager : MonoBehaviour
 
     void OnEnable()
     {
-        intervalTime = UnityEngine.Random.Range(minTime, maxTime);
+        gap = UnityEngine.Random.Range(minTime, maxTime);
 
-        Cartridge = new GameObject[capacity];
-        for (int i = 0; i < capacity; i++)
+        Sector = new GameObject[length];
+        for (int i = 0; i < length; i++)
         {
             GameObject enemy = Instantiate(enemyBody);
-            Cartridge[i] = enemy;
-            enemy.SetActive(false);
+            Sector[i] = enemy;
+            Sector[i].SetActive(false);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
+        now += Time.deltaTime;
 
-        if(currentTime > intervalTime)
+        if(now > gap)
         {
-            for(int i = 0; i < capacity; i++)
+            for(int i = 0; i < length; i++)
             {
-                GameObject Generator = Cartridge[i];
-                if(Generator.activeSelf == false)
+                GameObject Facility = Sector[i];
+                if(Facility.activeSelf == false)
                 {
-                    int sector = UnityEngine.Random.Range(0, Publisher.Length - 1);
-                    Generator.transform.position = Publisher[sector].position;
-                    Generator.SetActive(true);
+                    int capacity = Cylinder.Length - 1;
+                    int section = UnityEngine.Random.Range(0, capacity);
+                    Facility.transform.position = Cylinder[section].position;
+                    Facility.SetActive(true);
                     break;
                 }
             }
-            intervalTime = UnityEngine.Random.Range(minTime, maxTime);
-            currentTime = 0;
+            gap = UnityEngine.Random.Range(minTime, maxTime);
+            now = 0;
         }
     }
 }
