@@ -17,7 +17,7 @@ public class Facility : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gap = UnityEngine.Random.Range(min, max);
+        gap = Random.Range(min, max);
 
         Sector = new GameObject[length];
         for (int i = 0; i < length; i++)
@@ -41,13 +41,13 @@ public class Facility : MonoBehaviour
                 if(Facility.activeSelf == false)
                 {
                     int capacity = Topology.Length - 1;
-                    int section = UnityEngine.Random.Range(0, capacity);
+                    int section = Random.Range(0, capacity);
                     Facility.transform.position = Topology[section].position;
                     Facility.SetActive(true);
                     break;
                 }
             }
-            gap = UnityEngine.Random.Range(min, max);
+            gap = Random.Range(min, max);
             now = 0;
         }
     }
