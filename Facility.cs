@@ -12,15 +12,10 @@ public class Facility : MonoBehaviour
     public GameObject enemyBody;
     public int length = 10;
     GameObject[] Sector;
-    public Transform[] Cylinder;
+    public Transform[] Topology;
     
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    void OnEnable()
     {
         gap = UnityEngine.Random.Range(min, max);
 
@@ -37,17 +32,17 @@ public class Facility : MonoBehaviour
     void Update()
     {
         now += Time.deltaTime;
-
-        if(now > gap)
+        
+        if (now > gap)
         {
-            for(int i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
                 GameObject Facility = Sector[i];
                 if(Facility.activeSelf == false)
                 {
-                    int capacity = Cylinder.Length - 1;
+                    int capacity = Topology.Length - 1;
                     int section = UnityEngine.Random.Range(0, capacity);
-                    Facility.transform.position = Cylinder[section].position;
+                    Facility.transform.position = Topology[section].position;
                     Facility.SetActive(true);
                     break;
                 }
