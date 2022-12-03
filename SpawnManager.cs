@@ -12,10 +12,15 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyBody;
     public int capacity = 10;
     GameObject[] Cartridge;
-    public Transform[] spawnPoints;
+    public Transform[] Publisher;
     
     // Start is called before the first frame update
     void Start()
+    {
+        
+    }
+
+    void OnEnable()
     {
         intervalTime = UnityEngine.Random.Range(minTime, maxTime);
 
@@ -40,8 +45,8 @@ public class SpawnManager : MonoBehaviour
                 GameObject Generator = Cartridge[i];
                 if(Generator.activeSelf == false)
                 {
-                    int index = Random.Range(0, spawnPoints.Length);
-                    Generator.transform.position = spawnPoints[index].position;
+                    int sector = UnityEngine.Random.Range(0, Publisher.Length - 1);
+                    Generator.transform.position = Publisher[sector].position;
                     Generator.SetActive(true);
                     break;
                 }
