@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class Facility : MonoBehaviour
 {
-    float minTime = 0.5f;
-    float maxTime = 1.5f;
+    float min = 0.5f;
+    float max = 1.5f;
     float now;
     float gap;
 
@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
 
     void OnEnable()
     {
-        gap = UnityEngine.Random.Range(minTime, maxTime);
+        gap = UnityEngine.Random.Range(min, max);
 
         Sector = new GameObject[length];
         for (int i = 0; i < length; i++)
@@ -52,7 +52,7 @@ public class SpawnManager : MonoBehaviour
                     break;
                 }
             }
-            gap = UnityEngine.Random.Range(minTime, maxTime);
+            gap = UnityEngine.Random.Range(min, max);
             now = 0;
         }
     }
