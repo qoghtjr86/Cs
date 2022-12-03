@@ -11,9 +11,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
 
+    }
+
+    void OnEnable()
+    {
         int randValue = UnityEngine.Random.Range(0, 10);
 
-        if(randValue < 3)
+        if (randValue < 3)
         {
             GameObject target = GameObject.Find("Player");
             if (target)
@@ -54,7 +58,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
 
 
     }
