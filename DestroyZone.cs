@@ -18,9 +18,19 @@ public class DestroyZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("BulletBody") || other.gameObject.name.Contains("Enemy"))
+        if (other.gameObject.name.Contains("BulletBody"))
         {
             other.gameObject.SetActive(false);
+            PlayerGun player = GameObject.Find("Player").GetComponent<PlayerGun>();
+            player.Magazine.Add(other.gameObject);
         }
+        else if (other.gameObject.name.Contains("EnemyBody"))
+        {
+            other.gameObject.SetActive(false);
+            Facility enemy = GameObject.Find("Facility").GetComponent<Facility>();
+            enemy.Sector.Add(other.gameObject);
+        }
+        else
+            Destroy(other.gameObject);
     }
 }

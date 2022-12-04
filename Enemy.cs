@@ -52,11 +52,20 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.name.Contains("BulletBody"))
         {
             other.gameObject.SetActive(false);
+            PlayerGun player = GameObject.Find("Player").GetComponent<PlayerGun>();
+            player.Magazine.Add(other.gameObject);
+            gameObject.SetActive(false);
+            Facility enemy = GameObject.Find("Facility").GetComponent<Facility>();
+            enemy.Sector.Add(gameObject);
         }
         else
         {
             Destroy(other.gameObject);
+            gameObject.SetActive(false);
+            Facility enemy = GameObject.Find("Facility").GetComponent<Facility>();
+            enemy.Sector.Add(gameObject);
         }
-        gameObject.SetActive(false);
+
+        
     }
 }

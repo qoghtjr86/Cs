@@ -5,18 +5,17 @@ using UnityEngine;
 public class PlayerGun : MonoBehaviour
 {
     public GameObject bulletBody;
-    public GameObject Cylinder;
-    public int capacity = 10;
-    GameObject[] Magazine;
+    public int capacity = 20;
+    public List<GameObject> Magazine;
     // Start is called before the first frame update
     void Start()
     {
-        Magazine = new GameObject[capacity];
+        Magazine = new List<GameObject>();
         for(int i = 0; i < capacity; i++)
         {
             GameObject bullet = Instantiate(bulletBody);
             bullet.SetActive(false);
-            Magazine[i] = bullet;
+            Magazine.Add(bullet);
         }
     }
 
@@ -25,16 +24,10 @@ public class PlayerGun : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            for(int i = 0; i < capacity; i++)
-            {
-                GameObject Gun = Magazine[i];
-                if(Gun.activeSelf == false)
-                {
-                    Gun.transform.position = Cylinder.transform.position;
-                    Gun.SetActive(true);
-                    break;
-                }
-            }
+            GameObject bullet = Magazine[0];
+            bullet.SetActive(true);
+            Magazine.Remove(bullet);
+            bullet.transform.position = transform.position;            
         }
     }
 }

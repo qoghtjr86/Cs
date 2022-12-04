@@ -11,7 +11,7 @@ public class Facility : MonoBehaviour
 
     public GameObject enemyBody;
     public int length = 10;
-    GameObject[] Sector;
+    public List<GameObject> Sector;
     public Transform[] Topology;
     
     // Start is called before the first frame update
@@ -19,12 +19,12 @@ public class Facility : MonoBehaviour
     {
         gap = Random.Range(min, max);
 
-        Sector = new GameObject[length];
+        Sector = new List<GameObject>();
         for (int i = 0; i < length; i++)
         {
             GameObject enemy = Instantiate(enemyBody);
-            Sector[i] = enemy;
-            Sector[i].SetActive(false);
+            enemy.SetActive(false);
+            Sector.Add(enemy);
         }
     }
 
@@ -32,21 +32,18 @@ public class Facility : MonoBehaviour
     void Update()
     {
         now += Time.deltaTime;
-        
+
         if (now > gap)
         {
-            for (int i = 0; i < length; i++)
-            {
-                GameObject Facility = Sector[i];
-                if(Facility.activeSelf == false)
-                {
-                    int capacity = Topology.Length - 1;
-                    int section = Random.Range(0, capacity);
-                    Facility.transform.position = Topology[section].position;
-                    Facility.SetActive(true);
-                    break;
-                }
-            }
+            GameObject enemy = Sector[0];
+            Sector.Remove(enemy);
+
+            int capacity = Topology.Length - 1;
+            int section = Random.Range(0, capacity);
+            enemy.transform.position = Topology[section].position;
+
+            enemy.SetActive(true);
+        
             gap = Random.Range(min, max);
             now = 0;
         }
