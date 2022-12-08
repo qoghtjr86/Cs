@@ -12,7 +12,7 @@ public class Facility : MonoBehaviour
     public GameObject enemyBody;
     public int length = 10;
     public List<GameObject> Sector;
-    public Transform[] Topology;
+    public Transform[] TimeCapsule;
     
     // Start is called before the first frame update
     void Start()
@@ -38,9 +38,9 @@ public class Facility : MonoBehaviour
             GameObject enemy = Sector[0];
             Sector.Remove(enemy);
 
-            int capacity = Topology.Length - 1;
+            int capacity = TimeCapsule.Length - 1;
             int section = Random.Range(0, capacity);
-            enemy.transform.position = Topology[section].position;
+            enemy.transform.position = TimeCapsule[section].position;
 
             enemy.SetActive(true);
         
